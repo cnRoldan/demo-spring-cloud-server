@@ -4,10 +4,10 @@ Este repositorio muestra un ejemplo sencillo de uso de Spring Cloud Config con d
 
 ## Modulos
 
-El proyecto est\u00e1 compuesto por tres m\u00f3dulos de Maven independientes:
+El proyecto est\u00e1 compuesto por varios m\u00f3dulos de Maven independientes:
 
 - **launcher**: implementa el servidor de configuraci\u00f3n de Spring Cloud. Se inicia en el puerto `8888` y obtiene los archivos de configuraci\u00f3n desde un repositorio Git remoto definido en `application.properties`.
-- **artefacto1** y **artefacto2**: aplicaciones Spring Boot que act\u00faan como clientes del servidor de configuraci\u00f3n. Cada una expone un endpoint REST `/mensaje` que devuelve el valor de `mensaje.bienvenida` recuperado del servidor.
+- **artefacto1**, **artefacto2** y **artefacto3**: aplicaciones Spring Boot que act\u00faan como clientes del servidor de configuraci\u00f3n. Cada una expone un endpoint REST `/mensaje` que devuelve el valor de `mensaje.bienvenida` recuperado del servidor.
 
 ## Requisitos
 
@@ -36,7 +36,12 @@ cd artefacto2
 ../mvnw spring-boot:run
 ```
 
-4. Accede a `http://localhost:8080/mensaje` y `http://localhost:8081/mensaje` (o el puerto configurado) para ver el mensaje proporcionado por el servidor de configuraci\u00f3n.
+```bash
+cd artefacto3
+../mvnw spring-boot:run
+```
+
+4. Accede a `http://localhost:8080/mensaje`, `http://localhost:8081/mensaje` y `http://localhost:8082/mensaje` (o el puerto configurado) para ver el mensaje proporcionado por el servidor de configuraci\u00f3n.
 
 Los cambios en la configuraci\u00f3n pueden recargarse en caliente invocando el endpoint `/actuator/refresh` de cada servicio.
 
